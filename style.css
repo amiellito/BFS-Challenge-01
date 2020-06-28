@@ -25,20 +25,75 @@
 
 
 
-
-
-
-
-
-
-
-
-
 /* RESET */
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 /* GENERAL STYLE */
 
+
+:root{
+  --primary-color:#008489;
+  --secondary-color:#FF5A5F;
+}
+
+body{
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  cursor: pointer;
+}
+
+
 /* NAVIGATION */
+
+
+nav{
+  height: 80px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a{
+  color: white;
+}
+
+.search{
+  width: 12%;
+  padding: 1.5em 1em;
+  border-radius: 2em;
+  border: none;
+  background-color: dimgrey;
+  color: white;
+  font-size: .8em;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.magnify{
+  margin-right: 1em;
+}
 
 /* MAIN IMAGE GROUP */
 
