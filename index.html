@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>BFS-Challenge-01</title>
+  </head>
+  <body>
+    
+    <nav>
+      <div class="logo">
+        <svg width="102" height="32" fill="currentcolor" style="display: block;">
+          <path d="M29.24 22.68c-.16-.39-.31-.8-.47-1.15l-.74-1.67-.03-.03c-2.2-4.8-4.55-9.68-7.04-14.48l-.1-.2c-.25-.47-.5-.99-.76-1.47-.32-.57-.63-1.18-1.14-1.76a5.3 5.3 0 00-8.2 0c-.47.58-.82 1.19-1.14 1.76-.25.52-.5 1.03-.76 1.5l-.1.2c-2.45 4.8-4.84 9.68-7.04 14.48l-.06.06c-.22.52-.48 1.06-.73 1.64-.16.35-.32.73-.48 1.15a6.8 6.8 0 007.2 9.23 8.38 8.38 0 003.18-1.1c1.3-.73 2.55-1.79 3.95-3.32 1.4 1.53 2.68 2.59 3.95 3.33A8.38 8.38 0 0022.75 32a6.79 6.79 0 006.75-5.83 5.94 5.94 0 00-.26-3.5zm-14.36 1.66c-1.72-2.2-2.84-4.22-3.22-5.95a5.2 5.2 0 01-.1-1.96c.07-.51.26-.96.52-1.34.6-.87 1.65-1.41 2.8-1.41a3.3 3.3 0 012.8 1.4c.26.4.45.84.51 1.35.1.58.06 1.25-.1 1.96-.38 1.7-1.5 3.74-3.21 5.95zm12.74 1.48a4.76 4.76 0 01-2.9 3.75c-.76.32-1.6.41-2.42.32-.8-.1-1.6-.36-2.42-.84a15.64 15.64 0 01-3.63-3.1c2.1-2.6 3.37-4.97 3.85-7.08.23-1 .26-1.9.16-2.73a5.53 5.53 0 00-.86-2.2 5.36 5.36 0 00-4.49-2.28c-1.85 0-3.5.86-4.5 2.27a5.18 5.18 0 00-.85 2.21c-.13.84-.1 1.77.16 2.73.48 2.11 1.78 4.51 3.85 7.1a14.33 14.33 0 01-3.63 3.12c-.83.48-1.62.73-2.42.83a4.76 4.76 0 01-5.32-4.07c-.1-.8-.03-1.6.29-2.5.1-.32.25-.64.41-1.02.22-.52.48-1.06.73-1.6l.04-.07c2.16-4.77 4.52-9.64 6.97-14.41l.1-.2c.25-.48.5-.99.76-1.47.26-.51.54-1 .9-1.4a3.32 3.32 0 015.09 0c.35.4.64.89.9 1.4.25.48.5 1 .76 1.47l.1.2c2.44 4.77 4.8 9.64 7 14.41l.03.03c.26.52.48 1.1.73 1.6.16.39.32.7.42 1.03.19.9.29 1.7.19 2.5zM41.54 24.12a5.02 5.02 0 01-3.95-1.83 6.55 6.55 0 01-1.6-4.48 6.96 6.96 0 011.66-4.58 5.3 5.3 0 014.08-1.86 4.3 4.3 0 013.7 1.92l.1-1.57h2.92V23.8h-2.93l-.1-1.76a4.52 4.52 0 01-3.88 2.08zm.76-2.88c.58 0 1.09-.16 1.57-.45.44-.32.8-.74 1.08-1.25.25-.51.38-1.12.38-1.8a3.42 3.42 0 00-1.47-3.04 2.95 2.95 0 00-3.12 0c-.44.32-.8.74-1.08 1.25a4.01 4.01 0 00-.38 1.8 3.42 3.42 0 001.47 3.04c.47.29.98.45 1.55.45zM53.45 8.46c0 .35-.06.67-.22.93-.16.25-.38.48-.67.64-.29.16-.6.22-.92.22-.32 0-.64-.06-.93-.22a1.84 1.84 0 01-.67-.64 1.82 1.82 0 01-.22-.93c0-.36.07-.68.22-.93.16-.3.39-.48.67-.64.29-.16.6-.23.93-.23a1.84 1.84 0 011.6.86 2 2 0 01.21.94zm-3.4 15.3V11.7h3.18v12.08h-3.19zm11.68-8.9v.04c-.15-.07-.35-.1-.5-.13-.2-.04-.36-.04-.55-.04-.89 0-1.56.26-2 .8-.48.55-.7 1.32-.7 2.31v5.93h-3.19V11.69h2.93l.1 1.83c.32-.64.7-1.12 1.24-1.48a3.1 3.1 0 011.81-.5c.23 0 .45.02.64.06.1.03.16.03.22.06v3.2zm1.28 8.9V6.74h3.18v6.5c.45-.58.96-1.03 1.6-1.38a5.02 5.02 0 016.08 1.31 6.55 6.55 0 011.6 4.49 6.96 6.96 0 01-1.66 4.58 5.3 5.3 0 01-4.08 1.86 4.3 4.3 0 01-3.7-1.92l-.1 1.57-2.92.03zm6.15-2.52c.57 0 1.08-.16 1.56-.45.44-.32.8-.74 1.08-1.25.26-.51.38-1.12.38-1.8 0-.67-.12-1.28-.38-1.79a3.75 3.75 0 00-1.08-1.25 2.95 2.95 0 00-3.12 0c-.45.32-.8.74-1.09 1.25a4.01 4.01 0 00-.38 1.8 3.42 3.42 0 001.47 3.04c.47.29.98.45 1.56.45zm7.51 2.53V11.69h2.93l.1 1.57a3.96 3.96 0 013.54-1.89 4.1 4.1 0 013.82 2.44c.35.76.54 1.7.54 2.75v7.24h-3.19v-6.82c0-.84-.19-1.5-.57-1.99-.38-.48-.9-.74-1.56-.74-.48 0-.9.1-1.27.32-.35.23-.64.52-.86.93a2.7 2.7 0 00-.32 1.35v6.92h-3.16zm12.52 0V6.73h3.19v6.5a4.67 4.67 0 013.73-1.89 5.02 5.02 0 013.95 1.83 6.57 6.57 0 011.59 4.48 6.95 6.95 0 01-1.66 4.58 5.3 5.3 0 01-4.08 1.86 4.3 4.3 0 01-3.7-1.92l-.09 1.57-2.93.03zm6.18-2.53c.58 0 1.09-.16 1.56-.45.45-.32.8-.74 1.09-1.25.25-.51.38-1.12.38-1.8a3.42 3.42 0 00-1.47-3.04 2.95 2.95 0 00-3.12 0c-.44.32-.8.74-1.08 1.25a3.63 3.63 0 00-.38 1.8 3.42 3.42 0 001.47 3.04c.47.29.95.45 1.55.45z"></path>
+        </svg>
+      </div>
+      <button class="search">Add a location</button>
+      <button class="currency">
+        <div class="globe"></div>
+      </button>
+      <a href="#" class="help">Help</a>
+      <a href="#" class="sign-up">Sign up</a>
+    </nav>
+
+    <section class="main-image-group">
+      <div class="m-video"></div>
+      <div class="m-image"></div>
+      <div class="m-image"></div>
+      <div class="m-image"></div>
+      <div class="m-image">
+        <div class="share-save">
+            <button class="share">Share</button>
+            <button class="save">Save</button></div>
+      </div>
+    </section>
+
+    <section class="main-description">
+      
+      <div class="title-block">
+        <div>
+          <span class="category">Online Experience</span>
+        </div>
+        <h1 class="title">Secrets of Magic</h1>
+        <div>
+          <span class="location">Berkhamsted, United Kingdom</span>
+        </div>
+        <div>
+          <span class="ratings">4.97<span class="star">★</span>(428)</span>
+        </div>
+        <ul class="tags">
+          <li>Magic Show</li>
+          <li>Performance</li>
+          <li>Class</li>
+        </ul>
+      </div>
+      
+      
+      <div class="detail">
+
+        <div>
+          <div class="icon"></div>          
+          <span class="join"></span>Book and join this experience from your computer, phone, or tablet.</span></div>
+        </div>
+
+        <div class="s-details">
+          
+          <div class="s-d-card">
+            <div class="time">
+              <span class="s-d-icon">󱠂</span>
+            </div>
+            <div class="s-d-title">Duration</div>
+            <div class="s-d-detail">1.5 hours</div>
+          </div>
+        
+
+          <div class="s-d-card">
+            <div class="group">
+              <span class="s-d-icon">󰄂</span>
+            </div>
+            <div class="s-d-title">Group Size</div>
+            <div class="s-d-detail">Up to 10 people</div>
+          </div>
+        
+
+          <div class="s-d-card">
+            <div class="language">
+              <span class="s-d-icon">󱜄</span>
+            </div>
+            <div class="s-d-title">Hosted in</div>
+            <div class="s-d-detail">English</div>
+          </div>
+        
+
+        </div>
+    </section>
+
+    <section class="sticky-cta">
+      <div class="sticky-left">
+        <img src="https://a0.muscache.com/im/pictures/user/fb15a727-24d6-4d43-a4a2-ef8ae71e0cee.jpg?aki_policy=profile_x_medium" alt="" class="id-pic">
+        <strong>Secrets of magic</strong>
+        <span class="sticky-rating">4.97★<em>(428)</em></span>
+      </div>
+      <div class="sticky-right">
+        <span class="sticky-price">From $34/person</span>
+        <button class="see-dates">See dates</button>
+      </div>
+    </section>
+
+
+    <section class="summary">
+      <div class="summary-container">
+        <div class="left"><h1>What you'll do</h1></div>
+        <div class="right">
+          <p>
+            Prepare to be inspired and spellbound as we go on an epic 90 minute journey through my magical world.
+  
+            Join me in the Secrets of Magic Zoom Classroom where you will take part in a mind-blowing magic show with everyday objects such as cards, coins &amp; the gold-dust of our times - a roll of toilet paper!
+  
+            I'll share with you heartfelt &amp; inspiring stories of truly magical moments that have happened while entertaining children in hospital, which helped me discover what the true secret of magic really is.
+  
+            The show section dramatically ends with an attempt to break one of my Guinness World Records live for you on camera! (Goes without saying it won't be the skydive record I'm afraid)
+  
+            Then it's your turn to give it a go!
+  
+            I'll share with you some of the tricks you've just witnessed me perform. But this experience won't just be about learning tricks, we'll also explore the psychology that turns a trick into a piece of magic.
+  
+            For families, the recommended age of this experience is 7+ however private bookings get a bespoke service, allowing me to adapt to your child's age range/needs.
+  
+            This experience is great for team-building and if you book as a private group, I can provide a bespoke piece of magic. Is your group larger than my listed max group size for private groups? Send me a message!
+  
+            *Price is based on per person watching, regardless of location or if viewing on the same device*
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="left"><h1>Try something new together</h1></div>
+      <div class="right">
+        <div class="feature-cards">
+          <img class="f-icon" alt="" src="https://a0.muscache.com/pictures/2f1e240c-d383-45e4-b34b-8957d061cb32.jpg">
+          <div class="f-title"><h3>Thoughtful hosts</h3></div>
+          <div class="f-description"><span>Get to know hosts who share their expertise and a window to their world.</span></div>
+        </div>
+        <div class="feature-cards">
+          <img class="f-icon" alt="" src="https://a0.muscache.com/pictures/6ca44422-9ab4-42d0-94a1-73fff922164e.jpg">
+          <div class="f-title"><h3>Small group activities</h3></div>
+          <div class="f-description"><span>Get to know hosts who share their expertise and a window to their world.</span></div>
+        </div>
+        <div class="feature-cards">
+          <img class="f-icon" alt="" src="https://a0.muscache.com/pictures/1ae9646f-4fdc-487a-a6f0-fea0a4a6cc44.jpg">
+          <div class="f-title"><h3>Simple and global</h3></div>
+          <div class="f-description"><span>Join easily and participate from home without a lot of prep.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="host">
+      <div class="left"><h1>Your host</h1></div>
+      <div class="right">
+        <img src="https://a0.muscache.com/im/pictures/user/fb15a727-24d6-4d43-a4a2-ef8ae71e0cee.jpg?aki_policy=profile_x_medium" alt="" class="id-pic">
+        <div class="id-name"><h2>Martin</h2></div>
+        <div class="i-description">
+          <p>
+            I've been performing magic since the age of 12. Over the past few years, I broke several Guinness World Records in magic to raise money/awareness for Spread a Smile who provide entertainment for children in hospital. 
+
+            I hold the Guinness Book of World Record titles for:
+            Most Magic Tricks on a Skydive
+            Most Magic Tricks in a Wind Tunnel
+            Most Magic Tricks Blindfolded in 1 Minute
+            Most Playing Cards Identified in 1 Minute
+
+            Each record has been crazy ride, particularly the blindfold record, which was first achieved on Britain's Got Talent in 2018 and which I’ve since broken twice in 2019.
+
+            This online experience is an adaptation of my in-person experience “Secrets of Magic at Kings Cross Station” which has almost 40 5-star reviews!
+
+            My magic is family friendly and guaranteed to be an experience you'll remember forever!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bring">
+      <div class="left"><h1>What to Bring</h1></div>
+      <div class="right">
+        <div class="b-container">
+          <div class="b">
+            <div class="check"><svg viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" style="height: 32px; width: 32px; display: block; fill: currentcolor;"><path d="m16 31c-8.28 0-15-6.72-15-15s6.72-15 15-15 15 6.72 15 15-6.72 15-15 15m0-31c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16m5.71 12.29c.39.39.39 1.02 0 1.41l-6 6c-.39.39-1.02.39-1.41 0l-3-3c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l2.29 2.29 5.29-5.29c.39-.39 1.02-.39 1.41 0"></path></svg></div>
+            <span>Deck of playing cards (alternatively game cards such as Uno or even Tarot cards can be used)</span>
+          </div>
+          <div class="b">
+            <div class="check"><svg viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" style="height: 32px; width: 32px; display: block; fill: currentcolor;"><path d="m16 31c-8.28 0-15-6.72-15-15s6.72-15 15-15 15 6.72 15 15-6.72 15-15 15m0-31c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16m5.71 12.29c.39.39.39 1.02 0 1.41l-6 6c-.39.39-1.02.39-1.41 0l-3-3c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l2.29 2.29 5.29-5.29c.39-.39 1.02-.39 1.41 0"></path></svg></div>
+            <span>Roll of toilet paper (or even A4 paper if your tissue supply is running low!)</span>
+          </div>
+          <div class="b">
+            <div class="check"><svg viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" style="height: 32px; width: 32px; display: block; fill: currentcolor;"><path d="m16 31c-8.28 0-15-6.72-15-15s6.72-15 15-15 15 6.72 15 15-6.72 15-15 15m0-31c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16m5.71 12.29c.39.39.39 1.02 0 1.41l-6 6c-.39.39-1.02.39-1.41 0l-3-3c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l2.29 2.29 5.29-5.29c.39-.39 1.02-.39 1.41 0"></path></svg></div>
+            <span>A coin (preferably a larger coin of your currency but any coin will do)</span>
+          </div>
+          <div class="b">
+            <div class="check"><svg viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" style="height: 32px; width: 32px; display: block; fill: currentcolor;"><path d="m16 31c-8.28 0-15-6.72-15-15s6.72-15 15-15 15 6.72 15 15-6.72 15-15 15m0-31c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16m5.71 12.29c.39.39.39 1.02 0 1.41l-6 6c-.39.39-1.02.39-1.41 0l-3-3c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0l2.29 2.29 5.29-5.29c.39-.39 1.02-.39 1.41 0"></path></svg></div>
+            <span>A pen/pencil to use as a ‘magic wand’ (if you have a wand from a magic set or even a Harry Potter collectors wand, all the better)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how">
+      <div class="left"><h1>How to participate</h1></div>
+      <div class="right">
+        <div class="h-card"> 
+          <h2>Join a video Call</h2>
+          <p><span>Download Zoom</span> for free on a desktop or mobile device. After you book, you’ll receive an email with a link and details on how to join.</p>
+          <p class="testimonial">"I'll be coming to you, thanks to the magic of the internet, from my hometown of Berkhamsted in the United Kingdom."</p>
+          <span class="t-name">-Martin</span>
+        </div>
+        <div class="h-card">
+          <h2>Book a private group</h2>
+          <p>Want to join with just your family and friends? Martin will host a private group for up to 30 guests starting at $331.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="left">
+        <h1>Guest Reviews</h1>
+        <div class="score">4.97<span class="star">★★★★</span></div>
+      </div>
+      <div class="right">
+
+        <div class="review-card">
+          <img src="https://a0.muscache.com/im/pictures/user/5646a2d7-346a-4f7b-8553-deb4fc2e2b1a.jpg?aki_policy=profile_x_medium" alt="review img" class="r-image">
+          <div class="r-name">Lizz</div>
+          <div class="r-date">June 2020</div>
+          <div class="star">★★★★★</div>
+          <p class="r-description">
+            Martin's Secrets of Magic class was AWESOME!!! My whole team did this as a remote "team bonding" and it was such a fun experience. We were all wow-ed by the things Martin did, and we picked up some great skills! We would 100% take a class with Martin again, as well as recommend it to others. Martin even went out of his way to personalize our experience and gave some great stories. His story about why magic is so important to him is inspiring - be sure to ask him about it. Thank you, Martin! It was an amazing class.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <img src="https://a0.muscache.com/im/pictures/user/5646a2d7-346a-4f7b-8553-deb4fc2e2b1a.jpg?aki_policy=profile_x_medium" alt="review img" class="r-image">
+          <div class="r-name">Lizz</div>
+          <div class="r-date">June 2020</div>
+          <div class="star">★★★★★</div>
+          <p class="r-description">
+            Martin's Secrets of Magic class was AWESOME!!! My whole team did this as a remote "team bonding" and it was such a fun experience. We were all wow-ed by the things Martin did, and we picked up some great skills! We would 100% take a class with Martin again, as well as recommend it to others. Martin even went out of his way to personalize our experience and gave some great stories. His story about why magic is so important to him is inspiring - be sure to ask him about it. Thank you, Martin! It was an amazing class.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <img src="https://a0.muscache.com/im/pictures/user/5646a2d7-346a-4f7b-8553-deb4fc2e2b1a.jpg?aki_policy=profile_x_medium" alt="review img" class="r-image">
+          <div class="r-name">Lizz</div>
+          <div class="r-date">June 2020</div>
+          <div class="star">★★★★★</div>
+          <p class="r-description">
+            Martin's Secrets of Magic class was AWESOME!!! My whole team did this as a remote "team bonding" and it was such a fun experience. We were all wow-ed by the things Martin did, and we picked up some great skills! We would 100% take a class with Martin again, as well as recommend it to others. Martin even went out of his way to personalize our experience and gave some great stories. His story about why magic is so important to him is inspiring - be sure to ask him about it. Thank you, Martin! It was an amazing class.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <img src="https://a0.muscache.com/im/pictures/user/5646a2d7-346a-4f7b-8553-deb4fc2e2b1a.jpg?aki_policy=profile_x_medium" alt="review img" class="r-image">
+          <div class="r-name">Lizz</div>
+          <div class="r-date">June 2020</div>
+          <div class="star">★★★★★</div>
+          <p class="r-description">
+            Martin's Secrets of Magic class was AWESOME!!! My whole team did this as a remote "team bonding" and it was such a fun experience. We were all wow-ed by the things Martin did, and we picked up some great skills! We would 100% take a class with Martin again, as well as recommend it to others. Martin even went out of his way to personalize our experience and gave some great stories. His story about why magic is so important to him is inspiring - be sure to ask him about it. Thank you, Martin! It was an amazing class.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <img src="https://a0.muscache.com/im/pictures/user/5646a2d7-346a-4f7b-8553-deb4fc2e2b1a.jpg?aki_policy=profile_x_medium" alt="review img" class="r-image">
+          <div class="r-name">Lizz</div>
+          <div class="r-date">June 2020</div>
+          <div class="star">★★★★★</div>
+          <p class="r-description">
+            Martin's Secrets of Magic class was AWESOME!!! My whole team did this as a remote "team bonding" and it was such a fun experience. We were all wow-ed by the things Martin did, and we picked up some great skills! We would 100% take a class with Martin again, as well as recommend it to others. Martin even went out of his way to personalize our experience and gave some great stories. His story about why magic is so important to him is inspiring - be sure to ask him about it. Thank you, Martin! It was an amazing class.
+          </p>
+        </div>
+
+        <ul class="pages">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ul>
+
+      </div>
+    </section>
+  
+    <section class="calendar">
+      <div class="c-item"></div>
+      <div class="c-item"></div>
+      <div class="c-item"></div>
+      <div class="c-item"></div>
+      <button class="c-button">Select a date</button>
+    </section>
+
+    <section class="reminders">
+      <div class="left"><h1>Things to keep in mind</h1></div>
+      <div class="right">
+        <div class="r-card">
+          <h2>Cancellation policy</h2>
+          <p>Any experience can be cancelled and fully refunded within 24 hours of purchase, or at least 7 days before the experience starts.</p>
+          <a href="#">Learn More</a>
+        </div>
+        <div class="r-card">
+          <h2>Cancellation policy</h2>
+          <p>Any experience can be cancelled and fully refunded within 24 hours of purchase, or at least 7 days before the experience starts.</p>
+          <a href="#">Learn More</a>
+        </div>
+        <div class="r-card">
+          <h2>Cancellation policy</h2>
+          <p>Any experience can be cancelled and fully refunded within 24 hours of purchase, or at least 7 days before the experience starts.</p>
+          <a href="#">Learn More</a>
+        </div>
+        <div class="r-card">
+          <h2>Cancellation policy</h2>
+          <p>Any experience can be cancelled and fully refunded within 24 hours of purchase, or at least 7 days before the experience starts.</p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="more-service">
+      <h1>More online experience</h1>
+      <div class="e-card-container">
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+        <div class="e-card">
+          <img src="" alt="experience" class="e-img">
+          <span class="e-location">London</span>
+          <span class="e-description">Laughter Sessions for Wellbeing</span>
+          <span class="e-price">Fron $13/person</span>
+          <span class="rating"><div class="star">★</div>5.0<em>(2)</em></span>
+        </div>
+
+      </div>
+
+      <a href="#">Show all online experiences</a>
+    </section>
+
+
+    <footer>
+      <div class="col-1">
+        <h4>About</h4>
+        <ul class="f-list">
+          <li>How Airbnb works</li>
+          <li>Diversity & Belonging</li>
+          <li>Accessibility</li>
+          <li>Trust & Safety</li>
+          <li>Airbnb Citizen</li>
+          <li>Olympics</li>
+          <li>Newsroom</li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <h4>Community</h4>
+        <ul class="f-list">
+          <li>Airbnb Magazine</li>
+          <li>Airbnb Associates</li>
+          <li>Airbnb for Work</li>
+          <li>Invite friends</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h4>Host</h4>
+        <ul class="f-list">
+          <li>Host your home</li>
+          <li>Host an online experience</li>
+          <li>Message from CEO Brian Chesky</li>
+          <li>Responsible hosting</li>
+          <li>Open Homes</li>
+          <li>Resource Centre</li>
+          <li>Community Centre</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <h4>Support</h4>
+        <ul class="f-list">
+          <li>Updates for COVID-19</li>
+          <li>Help Centre</li>
+          <li>Cancellation options</li>
+          <li>Neighbourhood Support</li>
+        </ul>
+      </div>
+
+      <div class="base">
+        <div class="left-base">
+          <ul class="legal">
+            <li>© 2020 Airbnb, Inc. All rights reserved</li>
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Terms</a></li>
+            <li><a href="">Sitemap</a></li>
+          </ul>
+        </div>
+        <div class="right-base">
+          <ul class="settings">
+            <li class="language">English(CA)</li>
+            <li class="currency">CAD</li>
+          </ul>
+          <ul class="social">
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+
+
+  </body>
+</html>
