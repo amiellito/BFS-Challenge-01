@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,600;0,700;0,800;1,400&display=swap');
+
 /* BFS CHALLENGE - 01 - Amiel Lapuebla */
 /* https://www.airbnb.com/experiences/1653761?source=p2 */
 
@@ -7,9 +9,11 @@
 /* 02 - GENERAL STYLE */
 /* 03 - NAVIGATION */
 /* 04 - MAIN IMAGE GROUP */
+  /* 04a SHARE SAVE BUTTONS */
 /* 05 - MAIN DESCRIPTION */
-  /* 05a - MAIN DESCRIPTION TITLE BLOCK (left) */
-  /* 05b - MAIN DESCRIPTION DETAILS (right) */
+  /* 05a - MAIN DESCRIPTION CONTAINER */
+    /* 05a1 - MAIN DESCRIPTION TITLE BLOCK (left) */
+    /* 05a2 - MAIN DESCRIPTION DETAILS (right) */
 /* 06 - STICKY CTA */
 /* 07 - SUMMARY */
 /* 08 - FEATURES */
@@ -43,10 +47,14 @@
   --primary-color:#008489;
   --secondary-color:#FF5A5F;
   --darkgrey-color: #323232;
+  --lightgrey-color: rgb(167, 167, 167);
+  --box-shadow-color: 6px 10px 25px -8px rgba(0,0,0,0.39);
 }
 
 body{
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.43;
+  -webkit-font-smoothing: antialiased;
 }
 
 li{
@@ -67,11 +75,14 @@ button{
 
 nav{
   height: 80px;
+  padding: 0 80px;
   background-color: black;
   color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+  font-weight: 400;
 }
 
 nav a{
@@ -79,14 +90,12 @@ nav a{
 }
 
 .search{
-  width: 12%;
-  padding: 1.5em 1em;
+  min-width: 300px;
+  padding: 1em 1em;
   border-radius: 2em;
   border: none;
   background-color: var(--darkgrey-color);
   color: white;
-  font-size: .8em;
-  font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,9 +108,9 @@ nav a{
 
 .nav-right{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 12%;
+  width: 250px;
 }
 
 .currency{
@@ -115,7 +124,7 @@ nav a{
   background-color:black;
 }
 
-.fas{
+.nav-right .fas{
   color: white;
   margin-left: .5em;
 }
@@ -125,23 +134,405 @@ nav a{
   border-radius: 2em;
   border: none;
   color: white;
-  font-size: .8em;
-  font-weight: 800;
 }
 
-.currency:hover, .help:hover, .sign-up:hover{
+.sign-up{
   background-color: var(--darkgrey-color);
+}
+
+.currency:hover, .help:hover{
+  background-color: var(--darkgrey-color);
+}
+
+
+@media screen and (max-width: 900px){
+  nav{
+    height: 160px;
+    padding: 0 5%;
+  }
+  
+  .search{
+    order: 3;
+  }
 }
 
 /* MAIN IMAGE GROUP */
 
+.main-image-group{
+  width: 100%;
+  background-color: black;
+  height: 50vh;
+}
+
+.m-image-container{
+  margin: 0 auto;
+  max-width: 1300px;
+  height: 100%;
+  padding-top: 2%;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(7, 1fr);
+  grid-gap: 10px;
+
+}
+
+.m-video{
+  background-color: steelblue;
+  grid-column: 1/3;
+  grid-row: 1/-1;
+}
+
+.i1{
+  background: url('img/magicman-1.jpg') bottom center;
+  background-size: cover;
+  grid-column: 3/5;
+  grid-row: 1/-1;
+}
+
+.i2{
+  background: url('img/magicman-2.jpg') top center;
+  background-size: cover;
+  grid-column: 5/6;
+  grid-row: 1/2;
+}
+
+.i3{
+  background: url('img/magicman-3.jpg') bottom center;
+  background-size: cover;
+  grid-column: 5/6;
+  grid-row: 2/3;
+}
+
+.i4{
+  background: url('img/magicman-4.jpg') bottom center;
+  background-size: cover;
+  grid-column: 6/8;
+  grid-row: 1/-1;
+  position: relative;
+}
+
+@media screen and (max-width: 900px){
+  .main-image-group{
+    height: 40vh;
+  }
+
+  .m-video{
+    grid-column: 1/-1;
+  }
+
+  .i1, .i2, .i3, .i4{
+    display: none;
+  }
+}
+
+/* SHARE SAVE BUTTONS */
+
+
+.share, .save{
+  color: var(--darkgrey-color);
+  padding: 6px 15px;
+  font-size: 1em;
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
+  box-shadow: var(--box-shadow-color);
+}
+
+.share-save .fas, .far{
+  margin-right: 10px;
+}
+
+.share{
+  margin-right: 20px;
+}
+
+.share-save{
+  position: absolute;
+  top: 30px;
+  right: 24px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 /* MAIN DESCRIPTION */
+
+
+.main-description{
+  background-color: black;
+  padding-top: 32px;
+  padding-bottom: 64px;
+  color: var(--lightgrey-color);
+}
+
+
+/* MAIN DESCRIPTION CONTAINER */
+
+
+.m-description-container{
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  line-height: 1.8em;
+}
+
+@media screen and (max-width: 1300px){
+
+  .m-description-container{
+    padding: 5%; 
+    justify-content: center;
+  }
+  
+}
+
 
 /* MAIN DESCRIPTION TITLE BLOCK (left) */
 
+.title-block{
+  width: 33.3333%;
+  margin-right: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+@media screen and (max-width: 1000px){
+
+  .title-block{
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 100%; 
+  }
+
+  .category{
+    order: 2;
+    margin-top: 1em;
+  }
+
+  .tags{
+    order: 3;
+    margin-bottom: 1em;
+  }
+
+  .icon{
+    margin-top: 8px;
+  }
+  
+}
+
+.category{
+  margin-bottom: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  color: var(--darkgrey-color);
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 11px;
+}
+
+.title-block .fas{
+  margin: 0 6px;
+  font-size: .7em;
+}
+
+
+.title{
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.125em;
+}
+
+
+.ratings{
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.375em;
+}
+
+.star{
+  margin: 0 6px;
+}
+
+em{
+  font-weight: 300;
+}
+
+.tags{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.tags li{
+  font-size: 10px;
+  line-height: 1em;
+  padding: 6px 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+  color: white;
+  background-color: var(--darkgrey-color);
+}
+
 /* MAIN DESCRIPTION DETAILS (right) */
 
+.detail{
+  display: flex;
+  flex-direction: column;
+}
+
+.join{
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2em 0;
+  margin-bottom: 20px;
+  border-top: 1px solid var(--lightgrey-color);
+  border-bottom: 1px solid var(--lightgrey-color);
+}
+
+.icon{
+  margin-right: 8px;
+}
+
+.s-details{
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.s-d-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  font-size: 14px;
+  line-height: 1.28571em;
+}
+
+.s-d-detail{
+  font-weight: 600;
+}
+
+.s-d-icon{
+  flex: 1;
+}
+
 /* STICKY CTA */
+
+.sticky-cta{
+  width: 100%;
+  background-color: white;
+  letter-spacing: .08em;
+  box-shadow: var(--box-shadow-color);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid rgb(235, 235, 235);
+}
+
+.sticky-cta-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  padding: 10px 0px;
+  margin : 0 auto;
+}
+
+.sticky-left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-left img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.sticky-left strong{
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.28571em;
+  text-transform: capitalize;
+  color: var(--darkgrey-color);
+}
+
+.sticky-rating{
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.33333em;
+  color: var(--primary-color);
+}
+
+em{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33333em;
+  color: var(--lightgrey-color);
+}
+
+.sticky-price{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.375em;
+  color: var(--darkgrey-color);
+}
+
+.see-dates{
+  padding: 10px 22px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
+  width: 205px;
+}
+
+@media screen and (max-width: 1310px){
+  
+  .sticky-cta-container{
+    padding: 2% 5%;
+  }
+
+}
+
+@media screen and (max-width: 700px){
+
+  .sticky-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 380px){
+
+  .sticky-left{
+    margin-right: 6px;
+    line-height: 1em;
+  }
+
+  .see-dates{
+    width: 150px;
+  }
+}
+
 
 /* SUMMARY */
 

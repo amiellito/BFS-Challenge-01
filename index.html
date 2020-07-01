@@ -39,14 +39,16 @@
 
 
     <section class="main-image-group">
-      <div class="m-video"></div>
-      <div class="m-image"></div>
-      <div class="m-image"></div>
-      <div class="m-image"></div>
-      <div class="m-image">
-        <div class="share-save">
-            <button class="share">Share</button>
-            <button class="save">Save</button></div>
+      <div class="m-image-container">
+        <div class="m-video"></div>
+        <div class="m-image i1"></div>
+        <div class="m-image i2"></div>
+        <div class="m-image i3"></div>
+        <div class="m-image i4">
+          <div class="share-save">
+              <button class="share"><i class="fas fa-external-link-alt"></i>Share</button>
+              <button class="save"><i class="far fa-heart"></i>Save</button></div>
+        </div>
       </div>
     </section>
 
@@ -57,69 +59,73 @@
 
 
     <section class="main-description">
-      
 
-      <!-- ********* MAIN DESCRIPTION TITLE-BLOCK (left) ********* -->
-      
 
-      <div class="title-block">
-        <div>
-          <span class="category">Online Experience</span>
+      <!-- MAIN DESCRIPTION CONTAINER -->
+
+
+      <div class="m-description-container">
+
+
+        <div class="title-block">
+          <div class="category">
+            <i class="fas fa-play"></i>
+            <span>Online Experience</span>
+          </div>
+          <h1 class="title">Secrets of Magic</h1>
+          <div>
+            <span class="location">Berkhamsted, United Kingdom</span>
+          </div>
+          <div>
+            <span class="ratings">4.97<span class="star">★</span><em>(428)</em></span>
+          </div>
+          <ul class="tags">
+            <li>Magic Show</li>
+            <li>Performance</li>
+            <li>Class</li>
+          </ul>
         </div>
-        <h1 class="title">Secrets of Magic</h1>
-        <div>
-          <span class="location">Berkhamsted, United Kingdom</span>
-        </div>
-        <div>
-          <span class="ratings">4.97<span class="star">★</span>(428)</span>
-        </div>
-        <ul class="tags">
-          <li>Magic Show</li>
-          <li>Performance</li>
-          <li>Class</li>
-        </ul>
-      </div>
-      
-
-      <!-- ********* MAIN DESCRIPTION DETAILS (right) ********* -->
-
-      
-      <div class="detail">
-
-        <div>
-          <div class="icon"></div>          
-          <span class="join"></span>Book and join this experience from your computer, phone, or tablet.</span></div>
-        </div>
-
-        <div class="s-details">
+        
+        
+        <div class="detail">
+        
+          <div class="join">
+            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="presentation" aria-hidden="true" focusable="false" style="height: 32px; width: 32px; display: block; fill: rgb(96, 182, 181);"><g fill="none"><path fill="#64DEE2" d="M36 6H12a1 1 0 0 0-.993.883L11 7v23h26V7a1 1 0 0 0-.883-.993L36 6z"></path><path fill="#FFF" d="M36 2a5 5 0 0 1 5 5v34a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm3 32H9v7a3 3 0 0 0 2.824 2.995L12 44h24a3 3 0 0 0 3-3v-7zm-15 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM36 4H12a3 3 0 0 0-3 3v25h30V7a3 3 0 0 0-3-3zm-6 4v2H18V8h12z"></path></g></svg></div>          
+            <span >Book and join this experience from your computer, phone, or tablet.</span>
+          </div>
+        
+          <div class="s-details">
+            
+            <div class="s-d-card">
+              <div class="s-d-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="s-d-title">Duration</div>
+              <div class="s-d-detail">1.5 hours</div>
+            </div>
           
-          <div class="s-d-card">
-            <div class="time">
-              <span class="s-d-icon">󱠂</span>
-            </div>
-            <div class="s-d-title">Duration</div>
-            <div class="s-d-detail">1.5 hours</div>
-          </div>
         
-
-          <div class="s-d-card">
-            <div class="group">
-              <span class="s-d-icon">󰄂</span>
+            <div class="s-d-card">
+              <div class="s-d-icon">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <div class="s-d-title">Group Size</div>
+              <div class="s-d-detail">Up to 10 people</div>
             </div>
-            <div class="s-d-title">Group Size</div>
-            <div class="s-d-detail">Up to 10 people</div>
-          </div>
+          
         
-
-          <div class="s-d-card">
-            <div class="language">
-              <span class="s-d-icon">󱜄</span>
+            <div class="s-d-card">
+              <div class="s-d-icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <div class="s-d-title">Hosted in</div>
+              <div class="s-d-detail">English</div>
             </div>
-            <div class="s-d-title">Hosted in</div>
-            <div class="s-d-detail">English</div>
+        
           </div>
 
         </div>
+
     </section>
 
 
@@ -129,14 +135,18 @@
 
 
     <section class="sticky-cta">
-      <div class="sticky-left">
-        <img src="https://a0.muscache.com/im/pictures/user/fb15a727-24d6-4d43-a4a2-ef8ae71e0cee.jpg?aki_policy=profile_x_medium" alt="" class="id-pic">
-        <strong>Secrets of magic</strong>
-        <span class="sticky-rating">4.97★<em>(428)</em></span>
-      </div>
-      <div class="sticky-right">
-        <span class="sticky-price">From $34/person</span>
-        <button class="see-dates">See dates</button>
+      <div class="sticky-cta-container">
+        <div class="sticky-left">
+          <img src="https://a0.muscache.com/im/pictures/user/fb15a727-24d6-4d43-a4a2-ef8ae71e0cee.jpg?aki_policy=profile_x_medium" alt="" class="id-pic">
+          <div class="s-left-description">
+            <strong>Secrets of magic</strong>
+            <span class="sticky-rating">4.97★</span><em>(428)</em>
+          </div>
+        </div>
+        <div class="sticky-right">
+          <span class="sticky-price">From $34/person</span>
+          <button class="see-dates">See dates</button>
+        </div>
       </div>
     </section>
 
@@ -516,7 +526,7 @@
         <div class="right-base">
           <ul class="settings">
             <li class="language">English(CA)</li>
-            <li class="currency">CAD</li>
+            <li class="cur">CAD</li>
           </ul>
           <ul class="social">
             <li>Facebook</li>
