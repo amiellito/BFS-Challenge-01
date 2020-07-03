@@ -787,7 +787,7 @@ hr{
   color: var(--darkgrey-color);
 }
 
-.how-container .right{
+.reviews-container .right{
   display: flex;
   flex-direction: column;
   margin-left: 16px;
@@ -800,7 +800,122 @@ hr{
   line-height: 1.66667em;
 }
 
+.r-user{
+  display: flex;
+  align-items: center;
+}
+
+.r-user-details{
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.r-date{
+  font-size: 16px;
+}
+
+.star{
+  margin: 0;
+}
+
+.score, .star{
+  font-size: 16px;
+}
+
+.score .star{
+  margin-left: 16px;
+  color: var(--primary-color);
+}
+
+
 /* CALENDAR */
+
+.c-item, .availability{
+  margin-top: 64px;
+  margin-bottom: 40px;
+}
+
+.calendar-container{
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.c-button{
+  padding: 10px 22px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  color: var(--primary-color);
+  min-width: 71.1935px; 
+  max-width: 205px;
+}
+
+.c-items-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-item{
+  width: 248px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  color: var(--darkgrey-color);
+  
+}
+
+.month{
+  height: 10%;
+}
+
+.week{
+  height: 10%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 6px;
+  grid-template-areas:
+  wwwwwww
+}
+
+.days{
+  height: 80%;
+  display: grid;
+  grid-template: repeat(6, 1fr)/repeat(7, 1fr);
+  grid-gap: 6px;
+  grid-template-areas: 
+  ccccccc
+  ccccccc
+  ccccccc
+  ccccccc
+  cc
+}
+
+.w, .c{
+  font-size: 10px;
+}
+
+.c{
+  border-radius: 6px;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s ease;
+}
+
+.select{
+  background-color: var(--lightgrey-color);
+}
+
+.c:hover{
+  background-color: var(--darkgrey-color);
+  color: white;
+}
 
 /* REMINDERS */
 
