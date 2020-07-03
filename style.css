@@ -63,6 +63,11 @@ li{
 
 a{
   text-decoration: none;
+  color: var(--darkgrey-color);
+}
+
+a:hover{
+  color: var(--lightgrey-color);
 }
 
 button{
