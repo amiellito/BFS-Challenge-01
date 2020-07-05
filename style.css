@@ -552,6 +552,17 @@ em{
   }
 }
 
+@media screen and (max-height: 830px){
+  .sticky-cta{
+    background-color: black;
+    border:none;
+  }
+
+  .sticky-cta-container *{
+    color:white;
+  }
+}
+
 
 /* SUMMARY */
 
