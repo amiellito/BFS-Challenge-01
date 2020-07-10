@@ -552,7 +552,7 @@ em{
   }
 }
 
-@media screen and (max-height: 830px){
+/* @media screen and (max-height: 40vh){
   .sticky-cta{
     background-color: black;
     border:none;
@@ -561,7 +561,7 @@ em{
   .sticky-cta-container *{
     color:white;
   }
-}
+} */
 
 
 /* SUMMARY */
